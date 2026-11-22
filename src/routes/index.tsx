@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import cover from "@/assets/cover.jpg";
 import greenhouse from "@/assets/greenhouse.jpg";
+import garden from "@/assets/garden.jpg";
+import seeds from "@/assets/seeds.jpg";
 import rose from "@/assets/rose.jpg";
 import tulip from "@/assets/tulip.jpg";
 import sunflower from "@/assets/sunflower.jpg";
@@ -89,11 +91,16 @@ const slides: { title: string; el: ReactNode }[] = [
     title: "الزراعة",
     el: (
       <Frame kicker="02 — الزراعة" title="كيف نزرع الأزهار؟">
-        <div className="flex gap-10 w-full items-stretch">
-          <img src={greenhouse} alt="بيت محمي للأزهار" loading="lazy" className="w-[520px] rounded-[40px] object-cover shadow-bloom" />
-          <Card icon="🌱" title="التربة والبذور" text="تربة خصبة جيدة التصريف وبذور أو شتلات من مصادر موثوقة." tone="bg-garden" />
-          <Card icon="☀️" title="الضوء والري" text="شمس كافية وري معتدل، وبيوت محمية لإنتاج طوال السنة." tone="bg-garden" />
-          
+        <div className="grid grid-cols-3 gap-10 w-full">
+          {[[seeds,"🌱 البذور والتربة","بذور موثوقة وتربة خصبة جيدة التصريف."],[garden,"🌷 البساتين المفتوحة","شمس من 6 إلى 8 ساعات وري معتدل منتظم."],[greenhouse,"🏡 البيوت المحمية","تحكم بالحرارة والرطوبة لإنتاج طوال السنة."]].map(([img,t,d])=>(
+            <div key={t} className="rounded-[40px] bg-card shadow-bloom overflow-hidden">
+              <img src={img} alt={t} loading="lazy" width={1024} height={1024} className="w-full h-[440px] object-cover" />
+              <div className="p-8">
+                <h3 className="slide-subtitle font-bold mb-3">{t}</h3>
+                <p className="slide-caption text-muted-foreground">{d}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </Frame>
     ),
