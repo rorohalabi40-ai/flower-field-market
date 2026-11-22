@@ -1,21 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import cover from "@/assets/cover.jpg";
-import greenhouse from "@/assets/greenhouse.jpg";
-import rose from "@/assets/rose.jpg";
-import tulip from "@/assets/tulip.jpg";
-import sunflower from "@/assets/sunflower.jpg";
-import orchid from "@/assets/orchid.jpg";
-import wedding from "@/assets/wedding.jpg";
-import birthday from "@/assets/birthday.jpg";
-import graduation from "@/assets/graduation.jpg";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "روضة البستان — عرض تقديمي عن تجارة الأزهار" },
+      { title: "بستان — عرض تقديمي عن تجارة الأزهار" },
       { name: "description", content: "عرض تقديمي أنيق عن مشروع تجاري للأزهار: الزراعة، السوق، التسويق والأرباح." },
-      { property: "og:title", content: "روضة البستان — عرض تقديمي عن تجارة الأزهار" },
+      { property: "og:title", content: "بستان — عرض تقديمي عن تجارة الأزهار" },
       { property: "og:description", content: "مشروع تجاري للأزهار: من البذرة إلى باقة العميل." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -61,13 +52,13 @@ const slides: { title: string; el: ReactNode }[] = [
   {
     title: "الغلاف",
     el: (
-      <div className="slide-content flex items-center justify-center text-center">
-        <img src={cover} alt="باقة ورد طبيعي" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-foreground/45" />
+      <div className="slide-content bg-bloom flex items-center justify-center text-center">
+        <div className="blob bg-accent" style={{ width: 700, height: 700, top: -200, right: -200, opacity: 0.6 }} />
+        <div className="blob bg-lilac" style={{ width: 600, height: 600, bottom: -200, left: -100, opacity: 0.6 }} />
         <div className="relative rise text-primary-foreground">
-          <div className="slide-kicker !text-accent mb-6">مشروع تجاري للأزهار</div>
-          <h1 className="slide-title-lg">روضة البستان</h1>
-          <p className="slide-subtitle mt-6">من البذرة إلى باقة العميل</p>
+          <div className="text-[160px] mb-6">🌸🌷🌻</div>
+          <h1 className="slide-title-lg">بستان</h1>
+          <p className="slide-subtitle mt-6 opacity-95">مشروع تجاري للأزهار — من البذرة إلى باقة العميل</p>
         </div>
       </div>
     ),
@@ -89,11 +80,10 @@ const slides: { title: string; el: ReactNode }[] = [
     title: "الزراعة",
     el: (
       <Frame kicker="02 — الزراعة" title="كيف نزرع الأزهار؟">
-        <div className="flex gap-10 w-full items-stretch">
-          <img src={greenhouse} alt="بيت محمي للأزهار" loading="lazy" className="w-[520px] rounded-[40px] object-cover shadow-bloom" />
+        <div className="flex gap-10 w-full">
           <Card icon="🌱" title="التربة والبذور" text="تربة خصبة جيدة التصريف وبذور أو شتلات من مصادر موثوقة." tone="bg-garden" />
-          <Card icon="☀️" title="الضوء والري" text="شمس كافية وري معتدل، وبيوت محمية لإنتاج طوال السنة." tone="bg-garden" />
-          
+          <Card icon="☀️" title="الضوء والري" text="من 6 إلى 8 ساعات شمس، وري منتظم معتدل حسب نوع الزهرة." tone="bg-garden" />
+          <Card icon="🏡" title="البيوت المحمية" text="تحكم بالحرارة والرطوبة لإنتاج مستمر طوال السنة." tone="bg-garden" />
         </div>
       </Frame>
     ),
@@ -103,9 +93,9 @@ const slides: { title: string; el: ReactNode }[] = [
     el: (
       <Frame kicker="03 — المنتجات" title="أزهارنا الأكثر طلبًا">
         <div className="grid grid-cols-4 gap-8 w-full">
-          {[[rose,"الورد الجوري"],[tulip,"التوليب"],[sunflower,"دوّار الشمس"],[orchid,"الأوركيد"]].map(([i,n])=>(
-            <div key={n} className="rounded-[40px] bg-card shadow-bloom p-6 text-center">
-              <img src={i} alt={n} loading="lazy" className="w-full aspect-square object-cover rounded-[28px]" />
+          {[["🌹","الورد الجوري"],["🌷","التوليب"],["🌻","دوّار الشمس"],["🌸","الأوركيد"]].map(([i,n])=>(
+            <div key={n} className="rounded-[40px] bg-card shadow-bloom p-12 text-center">
+              <div className="text-[140px]">{i}</div>
               <div className="slide-subtitle font-bold mt-4">{n}</div>
             </div>
           ))}
@@ -132,27 +122,9 @@ const slides: { title: string; el: ReactNode }[] = [
     ),
   },
   {
-    title: "المناسبات",
-    el: (
-      <Frame kicker="05 — المناسبات" title="تنسيقات وباقات لكل مناسبة">
-        <div className="grid grid-cols-3 gap-10 w-full">
-          {[[wedding,"الأفراح والخطوبة","تنسيق الطاولات والكوشة وباقات العروس."],[birthday,"أعياد الميلاد","باقات ملوّنة مغلّفة مع بطاقة تهنئة."],[graduation,"التخرج والتهاني","صناديق ورد أنيقة بلمسة شخصية."]].map(([img,t,d])=>(
-            <div key={t} className="relative h-[680px] rounded-[40px] overflow-hidden shadow-bloom">
-              <img src={img} alt={t} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
-              <div className="absolute inset-x-0 bottom-0 p-10 bg-gradient-to-t from-foreground/90 to-transparent text-primary-foreground">
-                <h3 className="slide-subtitle font-bold">{t}</h3>
-                <p className="slide-caption mt-2">{d}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Frame>
-    ),
-  },
-  {
     title: "التسويق",
     el: (
-      <Frame kicker="06 — التسويق" title="كيف نصل إلى العملاء؟">
+      <Frame kicker="05 — التسويق" title="كيف نصل إلى العملاء؟">
         <div className="flex gap-10 w-full">
           <Card icon="📱" title="متجر إلكتروني" text="طلب سريع وتوصيل في نفس اليوم مع بطاقات إهداء." />
           <Card icon="📸" title="وسائل التواصل" text="صور جذابة ومحتوى يومي على إنستغرام وتيك توك." />
@@ -164,7 +136,7 @@ const slides: { title: string; el: ReactNode }[] = [
   {
     title: "الأرباح",
     el: (
-      <Frame kicker="07 — مصادر الدخل" title="كيف يربح المشروع؟">
+      <Frame kicker="06 — مصادر الدخل" title="كيف يربح المشروع؟">
         <div className="flex gap-10 w-full">
           <Card icon="💐" title="البيع بالتجزئة" text="باقات يومية ومناسبات بأسعار متدرجة." tone="bg-accent" />
           <Card icon="🔁" title="الاشتراكات" text="باقة أسبوعية للمنازل والمكاتب بدخل ثابت." tone="bg-accent" />
@@ -180,9 +152,9 @@ const slides: { title: string; el: ReactNode }[] = [
         <div className="blob bg-accent" style={{ width: 700, height: 700, bottom: -250, right: -150, opacity: 0.6 }} />
         <div className="blob bg-primary" style={{ width: 500, height: 500, top: -150, left: -100, opacity: 0.5 }} />
         <div className="relative rise text-secondary-foreground">
-          
+          <div className="text-[150px]">🌼</div>
           <h2 className="slide-title-lg">لنزرع الجمال معًا</h2>
-          <p className="slide-subtitle mt-6">شكرًا لكم — روضة البستان</p>
+          <p className="slide-subtitle mt-6">شكرًا لكم — بستان</p>
         </div>
       </div>
     ),
