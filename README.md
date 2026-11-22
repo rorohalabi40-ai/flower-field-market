@@ -1,14 +1,18 @@
-# Welcome to your Lovable project
+# Flower Field Market
+
+أريدك أن تسمم لي موقع لعرض تقديمي يتحدث عن مشروع تجاري وهو اللي هو الأزهار، مثلاً يتحدث عن الأزهار وكيفية التجارة فيها وزرعها وإلى آخره. يعني يكون كله بشكل مرتب وأنيق وملفت ويكون يعني يليق بالألوان الزاهية. حسنًا.
 
 This project was built with [Lovable](https://lovable.dev).
 
+**Live app**: https://flower-field-market.lovable.app
+
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/31ce67e2-b45c-4d39-9468-e3346c78c621).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +24,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
